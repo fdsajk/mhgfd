@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>회원가입 페이지</title>
+   <meta charset="utf-8" />
+   <style>
+      /* 스타일을 추가하세요 */
+
+      body {
+         background-color: #fff;
+         font-family: Arial, sans-serif;
+      }
+
+      .container {
+         max-width: 400px;
+         margin: 0 auto;
+         padding: 20px;
+         background-color: #fff;
+         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+         margin-bottom: 20px;
+         
+      }
+
+      .form-group label {
+         display: block;
+         margin-bottom: 5px;
+         color: #333;
+         font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group select {
+         width: 100%;
+         padding: 8px;
+         font-size: 16px;
+         border-radius: 4px;
+         border: 1px solid #ccc;
+      }
+
+      .form-group button {
+         width: 100%;
+         padding: 16px;
+         font-size: 16px;
+         background-color: #ff0066;
+         color: #fff;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+         transition: background-color 0.3s;
+      }
+
+      button {width: 400px; height: 50px;
+            background: pink; border-color: pink;}
+
+      .form-group button:hover {
+         background-color: #ff80bf;
+      }
+
+      .options {
+         margin-top: 10px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .options label {
+         margin-right: 9px;
+         font-size: 10pt;
+      }
+
+      .options a {
+         color: #333;
+         text-decoration: none;
+         font-size: 10pt;
+      }
+
+      .required {
+         color: #337ab7;
+      }
+
+   </style>
+</head>
+<body>
+   <div class="container">
+      <div class="form-group">
+         <label for="username">아이디 <span class="required">*</span></label>
+         <input type="text" id="username" placeholder="아이디" required>
+      </div>
+      <div class="form-group">
+         <label for="nickname">닉네임 <span class="required">*</span></label>
+         <input type="text" id="nickname" placeholder="닉네임" required>
+      </div>
+      <div class="form-group">
+         <label for="password">비밀번호 <span class="required">*</span></label>
+         <input type="password" id="password" placeholder="비밀번호" required>
+      </div>
+      <div class="form-group">
+         <label for="confirm-password">비밀번호 확인 <span class="required">*</span></label>
+         <input type="password" id="confirm-password" placeholder="비밀번호 확인" required>
+      </div>
+  <label for="birth-year">생년</label>
+         <select id="birth-year">
+            <option value="">연도</option>
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <!-- 추가적인 연도 옵션을 이곳에 추가하세요 -->
+         </select>
+         <label for="birth-month">월</label>
+         <select id="birth-month">
+            <option value="">월</option>
+            <option value="1">1월</option>
+            <option value="2">2월</option>
+            <option value="3">3월</option>
+            <!-- 추가적인 월 옵션을 이곳에 추가하세요 -->
+         </select>
+         <label for="birth-day">일</label>
+         <select id="birth-day">
+            <option value="">일</option>
+            <option value="1">1일</option>
+            <option value="2">2일</option>
+            <option value="3">3일</option>
+            <!-- 추가적인 일 옵션을 이곳에 추가하세요 -->
+         </select>
+      </div>
+      <div class="form-group">
+         <label for="music-preference">음악 취향</label>
+         <select id="music-preference" multiple>
+            <option value="">모두 선택</option>
+            <option value="pop">POP</option>
+            <option value="rock">ROCK</option>
+            <option value="electronic">ELECTRONIC</option>
+            <option value="hip-hop">HIP-HOP</option>
+            <option value="r&b">R&B</option>
+            <option value="jazz">JAZZ</option>
+            <option value="classic">CLASSIC</option>
+            <option value="k-pop">K-POP</option>
+         </select>
+      </div>
+      <div class="form-group">
+         <label for="interest-country">관심 국가</label>
+         <select id="interest-country" multiple>
+            <option value="">모두 선택</option>
+            <option value="domestic">국내</option>
+            <option value="english">영어권 국가</option>
+            <option value="japan">일본</option>
+            <option value="asia">아시아</option>
+            <option value="europe">유럽</option>
+         </select>
+      </div>
+      <div class="form-group">
+         <label for="interest-topic">공연 관심사</label>
+         <select id="interest-topic" multiple>
+            <option value="">모두 선택</option>
+            <option value="domestic">국내공연</option>
+            <option value="overseas">내한공연</option>
+            <option value="festival">페스티벌</option>
+         </select>
+      </div>
+      <button onclick="register()">회원가입</button>
+   </div>
+
+   <script>
+      function register() {
+         var username = document.getElementById("username").value;
+         var nickname = document.getElementById("nickname").value;
+         var password = document.getElementById("password").value;
+         var confirmPassword = document.getElementById("confirm-password").value;
+         var birthYear = document.getElementById("birth-year").value;
+         var birthMonth = document.getElementById("birth-month").value;
+         var birthDay = document.getElementById("birth-day").value;
+         var musicPreference = Array.from(document.getElementById("music-preference").selectedOptions).map(option => option.value);
+         var interestCountry = Array.from(document.getElementById("interest-country").selectedOptions).map(option => option.value);
+         var interestTopic = Array.from(document.getElementById("interest-topic").selectedOptions).map(option => option.value);
+
+         // 회원가입 검증 로직을 여기에 추가하세요
+         // 예를 들어, 필수 항목의 입력 여부, 비밀번호 일치 여부 등을 확인하는 등의 작업을 수행합니다.
+         // 이 예시에서는 간단히 입력된 값을 콘솔에 출력하는 것으로 가정합니다.
+         console.log("아이디: " + username);
+         console.log("닉네임: " + nickname);
+         console.log("비밀번호: " + password);
+         console.log("비밀번호 확인: " + confirmPassword);
+         console.log("생년월일: " + birthYear + "-" + birthMonth + "-" + birthDay);
+         console.log("음악 취향: " + musicPreference);
+         console.log("관심 국가: " + interestCountry);
+         console.log("공연 관심사: " + interestTopic);
+      }
+   </script>
+</body>
+</html>
+
+
